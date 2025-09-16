@@ -1,0 +1,20 @@
+Story:
+A famous staircase in Tokyo has become a global tourist attraction thanks to a certain animated film. Thousands of fans visit it every year to re-create an emotional scene between two characters who “finally meet.”
+
+But we won’t tell you the movie name. Instead, here are your clues:
+
+Hint:
+
+The anime film was directed by a man who also created Weathering With You.
+
+The film’s Japanese title is written in three kanji: 君の名は.
+
+The staircase ends near a small shrine with a red torii gate.
+
+If you find the exact spot, you should be able to stand on Google Street View and see a vending machine in the corner.
+
+Task:
+Find the exact coordinates of this staircase on Google Maps.
+
+Flag format:
+flag{latitude,longitude}
