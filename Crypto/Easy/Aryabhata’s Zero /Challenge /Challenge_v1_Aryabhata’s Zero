@@ -4,3 +4,15 @@ A careless scribe removed all zero digits from our secret number before encrypti
 You are given an RSA modulus N, public exponent e, and ciphertext c = (m^e) mod N where m is the integer representation of the flag (i.e. m = int(flag.hex(), 16)). Before encryption the scribe removed exactly three zero digits from the decimal representation of m. The value you’re given is the decimal string of m with zeros removed.
 
 Restore the three zeros, recover m, then decrypt (use pow(m, e, N) relation) and convert m to the flag bytes (hex → ascii). Format: FLAG{...}
+
+
+N = 1949640239 e = 65537 c = 1291096550
+
+masked decimal representation (zeros removed):
+
+masked = 413298972152249228641797578151466311283844093
+
+note: exactly 3 zero digits were removed from original decimal of m.
+Your job: insert the three zeros (in the right places) to reconstruct m, then convert m -> bytes -> flag.
+Format of flag: FLAG{...}
+Hint: try inserting three '0' digits into the masked string at various positions and check pow(m_candidate, e, N) == c
