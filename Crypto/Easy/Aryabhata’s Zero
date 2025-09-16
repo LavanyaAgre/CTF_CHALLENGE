@@ -1,0 +1,6 @@
+Aryabhata introduced the concept of zero and place-value notation — a tiny symbol with huge power.
+A careless scribe removed all zero digits from our secret number before encrypting. Your job: restore the missing zeros, recover the original integer that encodes the flag, and decrypt it.
+
+You are given an RSA modulus N, public exponent e, and ciphertext c = (m^e) mod N where m is the integer representation of the flag (i.e. m = int(flag.hex(), 16)). Before encryption the scribe removed exactly three zero digits from the decimal representation of m. The value you’re given is the decimal string of m with zeros removed.
+
+Restore the three zeros, recover m, then decrypt (use pow(m, e, N) relation) and convert m to the flag bytes (hex → ascii). Format: FLAG{...}
