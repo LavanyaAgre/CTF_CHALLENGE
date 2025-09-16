@@ -1,0 +1,45 @@
+OSINT Layer
+
+“City of two letters” → Pi’s journey starts in Pondicherry (PY).
+
+“Ended where the waves whisper in Spanish” → Tomatlán, Mexico (the final shore).
+
+So players must OSINT search the movie plot to confirm these locations.
+
+
+Crypto Layer 1 (Caesar)
+
+Ciphertext given: Ymj vznhp gwtbs ktc ozruji tajw ymj qfed itl.
+
+This is Caesar shift +5.
+
+Decrypt → “The quick brown fox jumped over the lazy dog.” (decoy text).
+
+
+Crypto Layer 2 (Pi Key)
+
+The text is a red herring unless they notice “Key = First 10 digits after the decimal.”
+
+First 10 digits of Pi = 1415926535.
+
+Use this as a Vigenère key or multi-shift Caesar (per digit).
+
+Example method: shift each letter by successive Pi digits.
+
+Apply to the ciphertext again → reveals hidden coordinates.
+
+Result: 20.0531, -105.2506 → near Tomatlán, Mexico.
+
+
+
+
+Final Step
+
+Players must drop the coordinates into Google Maps → find Playa de Oro beach.
+
+There, a clue (e.g., in challenge infrastructure) reveals the final flag.
+
+
+
+Final Flag Example
+flag{pi_journey_from_py_to_mexico}
