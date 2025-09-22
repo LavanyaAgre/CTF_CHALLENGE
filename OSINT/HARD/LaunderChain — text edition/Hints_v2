@@ -1,0 +1,38 @@
+What players have (textual clues only)
+
+
+The invoice identifier: INV_7X9Z21.pdf (this is used as a string clue — it encodes a key fragment).
+
+The partial crypto tx id: 0xA1b2c3...d9e (useful for chain tracing if needed).
+
+Admin panel URL: http://vulnerable.local:8080/.
+
+Short plaintext note: admin@corp.local uses same password across services.
+
+Hint lines posted by the whistleblower (public):
+
+metadata blob encrypted — IV prepended
+
+web backup path visible in DB backup record
+
+SMB share: \\corp-srv\finance (accessible with svc account)
+
+Historic rates in sheet HistoricRates; use the sheet value for 2025-09-22
+
+
+
+
+
+
+
+Gameplay hints (keep secret until players ask)
+
+The web panel has a trivial SQL injection on user parameter of /profile?user=.
+
+The metadata encryption key is derived from invoice filename: first 6 chars of filename + 2025 (use KDF: SHA-256 then take first 32 bytes as AES-256 key). IV is the first 16 bytes of the blob.
+
+The web backup contains base64 encoded credentials for svc_finance.
+
+The SMB share holds rates.xlsx with HistoricRates sheet; that is the authoritative source for USD→INR on 2025-09-22 (do not use live online converters).
+
+The blockchain tx 0xA1b2c3...d9e is a red herring for the conversion; it can be used for optional cross-check.
