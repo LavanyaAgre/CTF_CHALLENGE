@@ -1,0 +1,2 @@
+Scenario:
+You come across a leaked invoice showing a suspicious payment of $73 made on 22nd September 2025. The attacker is trying to launder this through an Indian account. Your task is to investigate the real value of this transaction in INR on that date using publicly available information.
