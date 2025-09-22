@@ -1,0 +1,15 @@
+Solution Walkthrough
+
+Search for USD to INR historical exchange rate on 22nd Sept 2025.
+
+Publicly available sources (like XE, OANDA, Investing.com) show:
+
+1 USD ≈ ₹83.49 INR on 22 Sept 2025.
+
+Convert:
+
+73 × 83.49 = 6094.77 ≈ 6095 INR
+
+
+
+flag = flag{6095}
