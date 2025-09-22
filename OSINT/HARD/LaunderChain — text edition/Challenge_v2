@@ -1,0 +1,20 @@
+A short invoice snippet was scraped from a now-deleted paste. The scraped text contains a single line showing a suspicious payment and two small breadcrumbs:
+
+PAYMENT: USD 73
+DATE: 22-SEP-2025
+TX: 0xA1b2c3...d9e
+INV: INV_7X9Z21.pdf
+ADMIN PANEL: http://vulnerable.local:8080/
+NOTE: admin@corp.local uses same password across services
+
+
+A whistleblower posted a single forum post quoting the above lines before it was removed. Your job is to reconstruct the exact INR amount the attacker expected to receive on 22-SEP-2025 using only publicly derivable information and hidden artifacts referenced below (everything for the challenge is described in this text — there are no separate files to download).
+
+Objective (what to submit)
+
+Find the INR value of 73 USD as used by the attacker on 22-SEP-2025. Round to the nearest integer. Submit as:
+
+flag{<value_in_inr>}
+
+
+Example: flag{6095}
