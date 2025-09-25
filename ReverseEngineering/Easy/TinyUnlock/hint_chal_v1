@@ -1,0 +1,30 @@
+Build instructions
+
+Save as tinyunlock.c and run:
+
+gcc -O2 -s -o tinyunlock tinyunlock.c
+
+
+(distribute the binary tinyunlock to players)
+
+
+
+
+What to look for (hints)
+
+Run strings tinyunlock — look for short ASCII data.
+
+Use objdump -d or open in Ghidra / IDA to find the encoded array and the loop.
+
+The transform is very simple: each input character is added by 2 before comparison.
+
+
+  
+
+Progressive hints (give one at a time)
+
+(Hint 1) There’s a tiny static byte array inside the binary — that’s the encoded key.
+
+(Hint 2) The check does t = s[i] + 2; compare t to encoded[i].
+
+(Hint 3) Reverse: orig = encoded[i] - 2.
