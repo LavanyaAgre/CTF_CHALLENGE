@@ -1,0 +1,11 @@
+Official solution (SPOILER)
+
+Apply orig = encoded[i] - 2 to each byte:
+
+encoded = {74,71,78,78,81,54,52}
+orig bytes -> 'H','E','L','L','O','4','2'  => "HELLO42"
+
+
+So the key is HELLO42 and the flag printed by the program is:
+
+FLAG{HELLO42}
