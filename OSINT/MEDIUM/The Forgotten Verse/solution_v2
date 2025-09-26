@@ -1,0 +1,28 @@
+Hints/Steps (behind-the-scenes for the organizer):
+
+Start Point:
+Provide participants with a Twitter/X handle (e.g., @Kurukshetra_Seekr). The pinned tweet contains:
+
+“Abandon all varieties of dharma and just surrender unto Me… – Bhagavad Gita 18.66”
+The Sanskrit text is missing.
+
+Step 1 – Sanskrit Trail
+Searching for the missing verse in Sanskrit leads to a blog (e.g., seektruth108.wordpress.com).
+
+Step 2 – Blog Exploration
+On the blog, one post about "Hidden Meanings of Verse 18.66" contains an embedded Imgur image of the verse written in Devanagari script.
+The image metadata (OSINT step!) contains a hidden note like:
+
+Description: Look deeper into Kurukshetra...
+TAG: github.com/seektruth108
+
+
+Step 3 – GitHub Repository
+On GitHub, the user has a repo named “moksha-path”. Inside, a text file verses.txt contains normal verses, but one line has base64 text.
+
+Step 4 – Decode Base64
+Decoding reveals:
+
+Congratulations seeker!
+The true wisdom lies within you.
+FLAG: CTF{g1ta_kn0ws_th3_tru7h}
