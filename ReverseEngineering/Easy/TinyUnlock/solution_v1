@@ -8,4 +8,4 @@ orig bytes -> 'H','E','L','L','O','4','2'  => "HELLO42"
 
 So the key is HELLO42 and the flag printed by the program is:
 
-FLAG{HELLO42}
+TCHNVTE{HELLO42}
